@@ -2,14 +2,14 @@ package rungeKutta;
 
 import java.math.BigDecimal;
 
-class RungeKutta {
+class RungeKuttaQuartaOrdem {
 
     static BigDecimal[] resolverEdo(BigDecimal x0,
                                     BigDecimal y0,
                                     BigDecimal x1,
                                     BigDecimal subIntervalos,
                                     EquacaoDiferencial edo) {
-        int precisaoDecimal = 16;
+        int precisaoDecimal = 12;
 
         BigDecimal h = x1.subtract(x0);
         h = h.divide(subIntervalos, precisaoDecimal, BigDecimal.ROUND_HALF_UP);
@@ -38,6 +38,7 @@ class RungeKutta {
             x0 = x0.add(h);
 
             y0 = y1;
+
 
         }
         return new BigDecimal[]{x1, y1};
