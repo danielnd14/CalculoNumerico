@@ -18,17 +18,25 @@ class RungeKuttaQuartaOrdem {
         BigDecimal dois = new BigDecimal("2");
         BigDecimal seis = new BigDecimal("6");
 
+        BigDecimal f0;
+        BigDecimal f1;
+        BigDecimal f2;
+        BigDecimal f3;
+
         while (x0.compareTo(x1) < 0) {
 
-            BigDecimal f0 = edo.obterValorEDO(x0, y0);
+            f0 = edo.obterValorEDO(x0, y0);
 
-            BigDecimal f1 = edo.obterValorEDO(x0.add(h.divide(dois, precisaoDecimal, BigDecimal.ROUND_HALF_UP)),
+            /*f1 = f(x0 + h/2, y0 + (h/2)f0)*/
+            f1 = edo.obterValorEDO(x0.add(h.divide(dois, precisaoDecimal, BigDecimal.ROUND_HALF_UP)),
                     y0.add(h.divide(dois, precisaoDecimal, BigDecimal.ROUND_HALF_UP).multiply(f0)));
 
-            BigDecimal f2 = edo.obterValorEDO(x0.add(h.divide(dois, precisaoDecimal, BigDecimal.ROUND_HALF_UP)),
+            /*f2 = f(x0 + h/2, y0 + (h/2)f1)*/
+            f2 = edo.obterValorEDO(x0.add(h.divide(dois, precisaoDecimal, BigDecimal.ROUND_HALF_UP)),
                     y0.add(h.divide(dois, precisaoDecimal, BigDecimal.ROUND_HALF_UP).multiply(f1)));
 
-            BigDecimal f3 = edo.obterValorEDO(x0.add(h),
+            /*f3 = f(x0 + h, y0 + hf2)*/
+            f3 = edo.obterValorEDO(x0.add(h),
                     y0.add(h.multiply(f2)));
 
             /*y0 +h/6(f0 + 2f1 + 2f2 + f3)*/
